@@ -343,11 +343,14 @@ function drawSprites() {
 
 // Draws player spaceship
 function playerShip() {
+
+  const shipImage = document.getElementById("shipImage");
+
   x1 = 0;
   y1 = 0 + centreOfY / 2;
-  x2 = 30;
-  y2 = 0 + centreOfY / 2 + 20;
-  x3 = -30;
+  x2 = 80;
+  y2 = 40 + centreOfY / 2 + 20;
+  x3 = -230;
   y3 = 0 + centreOfY / 2 + 20;
   s = 9;
 
@@ -356,52 +359,13 @@ function playerShip() {
   ctx.translate(centreOfX, centreOfY);
   ctx.rotate(convertToRadians(angle));
 
+  const shipX = -((x2 - x1) / 2) + x1;
+  const shipY = -((y2 - y1) / 2) + y1;
+  
+  ctx.drawImage(shipImage, shipX, shipY, x2 - x1, y2 - y1);
   // Shapes used to draw ship
   // Under Glow
   ctx.beginPath();
-  ctx.fillStyle = "Violet";
-  ctx.moveTo(x1, y1 - 1);
-  ctx.lineTo(x2 + 5, y2 + 3);
-  ctx.lineTo(x3 - 5, y3 + 3);
-  ctx.fill();
-
-  // Small engine light right
-  ctx.beginPath();
-  ctx.fillStyle = "white";
-  ctx.arc(x1 + 23, y2, s / 2, 0, Math.PI * 1);
-  ctx.fill();
-
-  // Engine light right
-  ctx.beginPath();
-  ctx.fillStyle = "white";
-  ctx.arc(x1 + 12, y2 - 3, s, 0, Math.PI * 1);
-  ctx.fill();
-
-  // Engine light middle
-  ctx.beginPath();
-  ctx.fillStyle = "white";
-  ctx.arc(x1, y2 - 3, s, 0, Math.PI * 1);
-  ctx.fill();
-
-  // Engine light left
-  ctx.beginPath();
-  ctx.fillStyle = "white";
-  ctx.arc(x1 - 12, y2 - 3, s, 0, Math.PI * 1);
-  ctx.fill();
-
-  // Small engine light left
-  ctx.beginPath();
-  ctx.fillStyle = "white";
-  ctx.arc(x1 - 23, y2, s / 2, 0, Math.PI * 1);
-  ctx.fill();
-
-  // Top black triangle
-  ctx.beginPath();
-  ctx.fillStyle = "#000";
-  ctx.moveTo(x1, y1);
-  ctx.lineTo(x2 + 4, y2);
-  ctx.lineTo(x3 - 4, y3);
-  ctx.fill();
 
   // Restore canvas to saved state before transformation
   ctx.restore();
